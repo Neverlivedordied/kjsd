@@ -1,28 +1,49 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=-1">
+<style>
+p {
+  text-align: right;
+  font-size: 20px;
+  margin-top: 0px;
+}
+</style>
+</head>
 <body>
 
-<h1 id="myH1"></h1>
-<div id="myDIV"></div>
-
-<p><strong>Note:</strong> apple bees go b rrrrrrr
+<p id="demo"></p>
 
 <script>
-if(typeof(EventSource) !== "undefined") {
-  var source = new EventSource("/html/demo_sse.php");
-  source.onopen = function() {
-    document.getElementById("myH1").innerHTML = "Getting server updates";
-  };
-  
-  source.onmessage = function(event) {
-    document.getElementById("myDIV").innerHTML += event.data + "<br>";
-  };
+// Set the date we're counting down to
+var countDownDate = new Date("april 30, 2022 9:41:05").getTime();
 
-} else {
-  document.getElementById("myDIV").innerHTML = "Sorry, your browser does not support server-sent events...";
-}
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "welcome ";
+  }
+}, 1000);
 </script>
 
 </body>
 </html>
-
