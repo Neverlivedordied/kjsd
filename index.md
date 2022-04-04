@@ -1,37 +1,28 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html>
+<body>
 
-You can use the [editor on GitHub](https://github.com/Neverlivedordied/kjsd/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+<h1 id="myH1"></h1>
+<div id="myDIV"></div>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<p><strong>Note:</strong> apple bees go b rrrrrrr
 
-### Markdown
+<script>
+if(typeof(EventSource) !== "undefined") {
+  var source = new EventSource("/html/demo_sse.php");
+  source.onopen = function() {
+    document.getElementById("myH1").innerHTML = "Getting server updates";
+  };
+  
+  source.onmessage = function(event) {
+    document.getElementById("myDIV").innerHTML += event.data + "<br>";
+  };
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+} else {
+  document.getElementById("myDIV").innerHTML = "Sorry, your browser does not support server-sent events...";
+}
+</script>
 
-```markdown
-Syntax highlighted code block
+</body>
+</html>
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Neverlivedordied/kjsd/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
